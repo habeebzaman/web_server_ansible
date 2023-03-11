@@ -1,0 +1,11 @@
+# These are the hosts that ansible is going to target. Please add new host as needed. 
+
+[web]
+192.168.1.120
+
+[testpc1]
+192.168.1.204
+
+[Fedora_2]
+192.168.1.241
+

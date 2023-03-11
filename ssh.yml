@@ -1,0 +1,15 @@
+---
+# to run this command, ansible-playbook ssh.yml -k
+# at the password prompt, provide the remote user password
+
+- name: copy ssh key to remote system
+  hosts: Fedora_2
+  # gather_facts: false
+  # remote_user: habeeb
+  tasks:
+    - name: fetch all public ssh keys
+      ansible.posix.authorized_key:
+        user: habeeb
+        state: present
+        key: "{{ lookup('file', '/home/habeeb/.ssh/ansible_ed25519.pub') }}"
+...

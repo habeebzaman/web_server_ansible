@@ -1,0 +1,26 @@
+---
+
+# This playbook setup the hosts with necessary modules
+
+- name: Add apps for Git
+  hosts: localhost
+  gather_facts: false
+  become: true
+  tasks:
+  - name: git libraries setup
+    ansible.builtin.apt:
+      pkg:
+      - libz-dev
+      - libssl-dev
+      - libcurl4-gnutls-dev
+      - libexpat1-dev
+      - gettext
+      - cmake
+      - gcc
+      state: latest
+      update_cache: yes
+  - name: pass git config
+    ansible.builtin.shell: |
+      git config --global user.name "habeebzaman"
+      git config --global user.email "habeebzaman@yahoo.com"
+      cat ~/.gitconfig
